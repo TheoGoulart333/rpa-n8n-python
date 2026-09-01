@@ -2,6 +2,10 @@ name: Atualizar dashboard do repositório
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/index.html"
   schedule:
     - cron: "17 10 * * *"
 

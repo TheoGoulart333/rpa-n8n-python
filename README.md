@@ -110,3 +110,7 @@ Contribuicoes sao bem-vindas. Veja [CONTRIBUTING.md](CONTRIBUTING.md) para rodar
 Boas primeiras tarefas ficam marcadas com `good first issue`. Melhorias de documentacao, testes e pequenos ajustes de interface sao excelentes pontos de entrada para novos contribuidores.
 
 Veja tambem o [ROADMAP.md](ROADMAP.md) com ideias prontas para futuras issues.
+
+## Licenca
+
+Este projeto esta disponivel sob a [MIT License](LICENSE).

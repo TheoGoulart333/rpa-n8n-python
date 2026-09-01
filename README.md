@@ -19,6 +19,13 @@ python3 github_dashboard.py --demo
 open docs/index.html
 ```
 
+Para gerar tambem um resumo em Markdown:
+
+```bash
+python3 github_dashboard.py --demo --summary
+open docs/summary.md
+```
+
 Para consultar um repositório real, defina `GITHUB_REPOSITORY` e, se necessário, `GITHUB_TOKEN` no ambiente. O token é usado somente para autenticar as consultas e nunca deve ser salvo no repositório.
 
 Exemplo com este proprio repositorio:

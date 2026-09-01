@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths-ignore:
       - "docs/index.html"
+      - "docs/summary.md"
   schedule:
     - cron: "17 10 * * *"
 
@@ -21,11 +22,11 @@ jobs:
       - name: Gerar painel com dados do GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 github_dashboard.py
+        run: python3 github_dashboard.py --summary
       - name: Publicar atualização
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html
+          git add docs/index.html docs/summary.md
           git diff --cached --quiet || git commit -m "chore: atualiza dashboard do repositorio"
           git push

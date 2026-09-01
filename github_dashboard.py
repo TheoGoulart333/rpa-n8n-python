@@ -14,6 +14,7 @@ from urllib.request import Request, urlopen
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT = BASE_DIR / "docs" / "index.html"
+SUMMARY_OUTPUT = BASE_DIR / "docs" / "summary.md"
 
 
 def github_get(path: str) -> Any:
@@ -82,9 +83,44 @@ def render(data: dict[str, Any]) -> str:
 </style></head><body><main><header><div><div class="eyebrow">GitHub Repo Health Dashboard</div><h1>{name}</h1><p>{description}</p></div><div class="score {score_class}"><span>saúde geral</span><strong>{score}<small>/100</small></strong>{demo_note}</div></header><section class="grid"><div class="metric"><span>Estrelas</span><strong>{data["stars"]}</strong></div><div class="metric"><span>Forks</span><strong>{data["forks"]}</strong></div><div class="metric"><span>Issues abertas</span><strong>{data["open_issues"]}</strong></div><div class="metric"><span>Pull requests</span><strong>{data["open_prs"]}</strong></div></section><section class="columns"><article class="panel"><h2>Linguagens do projeto</h2>{language_rows}<div class="meta">Último push: {format_date(data.get("last_push"))}</div></article><article class="panel"><h2>Próximas melhorias</h2><ul>{recommendations}</ul><div class="meta">Execuções analisadas: {data["recent_runs"]} · Falhas: {data["failed_runs"]}</div></article></section></main></body></html>'''
 
 
+def render_markdown_summary(data: dict[str, Any]) -> str:
+    repo = data["repository"]
+    name = repo.get("full_name", "GitHub Repository")
+    recommendations = "\n".join(f"- {item}" for item in data["recommendations"])
+    languages = data.get("languages", {})
+    total_bytes = sum(languages.values()) or 1
+    language_rows = "\n".join(
+        f"- {language}: {round(value / total_bytes * 100)}%"
+        for language, value in sorted(languages.items(), key=lambda item: item[1], reverse=True)[:5]
+    ) or "- Nenhuma linguagem encontrada."
+    demo_note = "\n\n> Gerado em modo demonstracao." if data.get("demo") else ""
+    return f"""# Repo Health Summary: {name}
+
+## Indicadores
+
+- Health score: {data["health_score"]}/100
+- Estrelas: {data["stars"]}
+- Forks: {data["forks"]}
+- Issues abertas: {data["open_issues"]}
+- Pull requests abertos: {data["open_prs"]}
+- Execucoes analisadas: {data["recent_runs"]}
+- Falhas recentes: {data["failed_runs"]}
+- Ultimo push: {format_date(data.get("last_push"))}
+
+## Linguagens
+
+{language_rows}
+
+## Recomendacoes
+
+{recommendations}{demo_note}
+"""
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--demo", action="store_true", help="gera um painel local sem consultar a API")
+    parser.add_argument("--summary", action="store_true", help="gera tambem um resumo em Markdown")
     parser.add_argument("--repository", default=os.getenv("GITHUB_REPOSITORY", "TheoGoulart333/rpa-n8n-python"))
     args = parser.parse_args()
     try:
@@ -96,6 +132,9 @@ def main() -> int:
     OUTPUT.parent.mkdir(exist_ok=True)
     OUTPUT.write_text(render(data), encoding="utf-8")
     print(f"Dashboard gerado em {OUTPUT}")
+    if args.summary:
+        SUMMARY_OUTPUT.write_text(render_markdown_summary(data), encoding="utf-8")
+        print(f"Resumo Markdown gerado em {SUMMARY_OUTPUT}")
     return 0
 
 

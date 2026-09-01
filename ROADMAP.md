@@ -34,17 +34,6 @@ Sugestao:
 - cobrir repositorio sem atividade;
 - cobrir repositorio com muitas issues abertas.
 
-### Feature: gerar resumo em Markdown para relatorios
-
-Adicionar uma opcao para gerar um resumo em Markdown com os principais indicadores do repositorio.
-
-Sugestao de saida:
-
-- health score;
-- estrelas e forks;
-- issues abertas;
-- recomendacoes principais.
-
 ## Ideias maiores
 
 - Comparar dois repositorios lado a lado.

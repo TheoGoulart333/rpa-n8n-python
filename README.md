@@ -1,5 +1,9 @@
 # GitHub Repo Health Dashboard
 
+[![Atualizar dashboard do repositorio](https://github.com/TheoGoulart333/rpa-n8n-python/actions/workflows/dashboard.yml/badge.svg)](https://github.com/TheoGoulart333/rpa-n8n-python/actions/workflows/dashboard.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-online-blue.svg)](https://theogoulart333.github.io/rpa-n8n-python/)
+
 Um projeto de automação em Python que consulta a API do GitHub, mede a saúde de um repositório e publica um dashboard estático em `docs/index.html`. O projeto também mantém a automação RPA local com n8n e Python como exemplo de integração.
 
 ## O que ele entrega

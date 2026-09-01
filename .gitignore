@@ -1,0 +1,7 @@
+node_modules/
+.n8n/
+.env
+outbox/*.eml
+!outbox/.gitkeep
+__pycache__/
+

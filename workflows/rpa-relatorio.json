@@ -1,0 +1,75 @@
+{
+  "id": "RpaRelatorioLocal01",
+  "name": "RPA - Relatorio por Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rpa-relatorio",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "7b602c89-25dd-4d82-8ebc-934e635a1750",
+      "name": "Receber pedido",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "d9af6851-2441-41d8-8dcb-593fe8a91c4f"
+    },
+    {
+      "parameters": {
+        "jsCode": "const entrada = $json.body ?? $json;\n\nfor (const campo of ['cliente', 'email_destino', 'mensagem']) {\n  if (!entrada[campo] || typeof entrada[campo] !== 'string') {\n    throw new Error(`Campo obrigatorio ausente: ${campo}`);\n  }\n}\n\nreturn [{\n  json: {\n    cliente: entrada.cliente.trim(),\n    email_destino: entrada.email_destino.trim(),\n    mensagem: entrada.mensagem.trim(),\n    recebido_em: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "27d0808c-fe8c-4b85-b98e-8e00cafb72d6",
+      "name": "Validar dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const assunto = `Relatorio solicitado por ${$json.cliente}`;\nconst corpo = [\n  `Ola, ${$json.cliente}!`,\n  '',\n  'Seu pedido foi recebido e processado pela automacao:',\n  $json.mensagem,\n  '',\n  'Resumo automatico:',\n  '- Objetivo identificado: receber um relatorio atualizado.',\n  '- Tema principal: investimentos e analises de mercado.',\n  '- Recomendacao: valide fontes, riscos e horizonte antes de tomar decisoes.',\n  '',\n  `Processado em: ${$json.recebido_em}`,\n  '',\n  'Mensagem gerada automaticamente pelo fluxo n8n + Python.'\n].join('\\n');\n\nreturn [{ json: { ...$json, assunto, corpo, status: 'processado' } }];"
+      },
+      "id": "9b1c89b2-2f0c-45bc-88b9-945475041065",
+      "name": "Gerar relatorio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, cliente: $json.cliente, email_destino: $json.email_destino, assunto: $json.assunto, corpo: $json.corpo, status: $json.status } }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "e1510448-b529-425e-8c4b-692534ae2b2b",
+      "name": "Responder ao Python",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [720, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Receber pedido": {
+      "main": [[{"node": "Validar dados", "type": "main", "index": 0}]]
+    },
+    "Validar dados": {
+      "main": [[{"node": "Gerar relatorio", "type": "main", "index": 0}]]
+    },
+    "Gerar relatorio": {
+      "main": [[{"node": "Responder ao Python", "type": "main", "index": 0}]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ad003499-e182-48ae-8917-0052804e9367",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

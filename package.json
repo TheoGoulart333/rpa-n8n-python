@@ -1,0 +1,21 @@
+{
+  "name": "rpa-n8n-python",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RPA local com n8n e Python para gerar e enviar relatorios por e-mail",
+  "scripts": {
+    "n8n": "N8N_DIAGNOSTICS_ENABLED=false N8N_USER_FOLDER=.n8n node_modules/node/bin/node node_modules/n8n/bin/n8n start",
+    "importar": "N8N_DIAGNOSTICS_ENABLED=false N8N_USER_FOLDER=.n8n node_modules/node/bin/node node_modules/n8n/bin/n8n import:workflow --input=workflows/rpa-relatorio.json",
+    "ativar": "N8N_DIAGNOSTICS_ENABLED=false N8N_USER_FOLDER=.n8n node_modules/node/bin/node node_modules/n8n/bin/n8n publish:workflow --id=RpaRelatorioLocal01"
+  },
+  "dependencies": {
+    "n8n": "latest"
+  },
+  "devDependencies": {
+    "node": "^24.20.0"
+  },
+  "allowScripts": {
+    "node@24.20.0": true,
+    "sqlite3@5.1.7": true
+  }
+}

@@ -21,6 +21,29 @@ open docs/index.html
 
 Para consultar um repositório real, defina `GITHUB_REPOSITORY` e, se necessário, `GITHUB_TOKEN` no ambiente. O token é usado somente para autenticar as consultas e nunca deve ser salvo no repositório.
 
+Exemplo com este proprio repositorio:
+
+```bash
+GITHUB_REPOSITORY=TheoGoulart333/rpa-n8n-python python3 github_dashboard.py
+open docs/index.html
+```
+
+Exemplo com outro repositorio publico:
+
+```bash
+GITHUB_REPOSITORY=pallets/flask python3 github_dashboard.py
+open docs/index.html
+```
+
+No Windows PowerShell:
+
+```powershell
+$env:GITHUB_REPOSITORY="pallets/flask"
+python github_dashboard.py
+```
+
+Use `GITHUB_TOKEN` quando quiser evitar limites baixos da API ou consultar dados com permissao da sua conta. Gere um token no GitHub, use somente no ambiente local e nunca publique esse valor.
+
 ## Automação diária
 
 O workflow `.github/workflows/dashboard.yml` roda uma vez por dia e também pode ser iniciado manualmente na aba **Actions**. Ele usa o token automático do GitHub, gera o HTML e grava a atualização no próprio repositório.

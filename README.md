@@ -78,3 +78,5 @@ Este repositório já contém uma integração funcional com a API do GitHub. Pa
 Contribuicoes sao bem-vindas. Veja [CONTRIBUTING.md](CONTRIBUTING.md) para rodar o projeto, abrir issues e enviar Pull Requests.
 
 Boas primeiras tarefas ficam marcadas com `good first issue`. Melhorias de documentacao, testes e pequenos ajustes de interface sao excelentes pontos de entrada para novos contribuidores.
+
+Veja tambem o [ROADMAP.md](ROADMAP.md) com ideias prontas para futuras issues.

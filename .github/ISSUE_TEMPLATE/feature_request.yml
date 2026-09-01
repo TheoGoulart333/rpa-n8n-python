@@ -1,0 +1,27 @@
+name: Feature request
+description: Sugira uma melhoria para o dashboard ou automacao.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema ou oportunidade
+      description: Que melhoria voce gostaria de ver?
+      placeholder: Seria util se o dashboard tambem mostrasse...
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solucao sugerida
+      description: Descreva uma solucao possivel.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Links, exemplos, prints ou referencias.
+    validations:
+      required: false

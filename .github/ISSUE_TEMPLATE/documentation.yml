@@ -1,0 +1,19 @@
+name: Documentation
+description: Sugira uma melhoria de documentacao.
+title: "[Docs]: "
+labels: ["documentation", "good first issue"]
+body:
+  - type: textarea
+    id: area
+    attributes:
+      label: Onde a documentacao pode melhorar?
+      placeholder: README, CONTRIBUTING, GitHub Pages, exemplo de uso...
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Sugestao
+      placeholder: Adicionar um exemplo de...
+    validations:
+      required: true

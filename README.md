@@ -72,3 +72,9 @@ O projeto usa somente a biblioteca padrao do Python. A primeira instalacao do n8
 ## Próximo passo para o GitHub Developer Program
 
 Este repositório já contém uma integração funcional com a API do GitHub. Para a candidatura, falta completar no perfil um e-mail público de suporte e publicar uma página de documentação ou demonstração. O programa não é automático nem garantido: o GitHub analisa a aplicação enviada.
+
+## Contribuindo
+
+Contribuicoes sao bem-vindas. Veja [CONTRIBUTING.md](CONTRIBUTING.md) para rodar o projeto, abrir issues e enviar Pull Requests.
+
+Boas primeiras tarefas ficam marcadas com `good first issue`. Melhorias de documentacao, testes e pequenos ajustes de interface sao excelentes pontos de entrada para novos contribuidores.

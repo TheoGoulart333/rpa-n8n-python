@@ -1,0 +1,41 @@
+name: Bug report
+description: Reporte um problema encontrado no dashboard ou na automacao.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Obrigado por ajudar a melhorar o projeto.
+  - type: textarea
+    id: description
+    attributes:
+      label: Descricao
+      description: Explique o problema de forma objetiva.
+      placeholder: O dashboard mostra...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Como reproduzir
+      description: Liste os passos para alguem conseguir ver o erro.
+      placeholder: |
+        1. Rode python3 github_dashboard.py --demo
+        2. Abra docs/index.html
+        3. Veja o erro...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+      description: O que deveria acontecer?
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Ambiente
+      placeholder: macOS, Python 3.12, Chrome
+    validations:
+      required: false

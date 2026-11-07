@@ -6,10 +6,10 @@
 - Estrelas: 11
 - Forks: 1
 - Issues abertas: 0
-- Pull requests abertos: 0
+- Pull requests abertos: 1
 - Execucoes analisadas: 20
-- Falhas recentes: 18
-- Ultimo push: 07/11/2026 17:10 UTC
+- Falhas recentes: 14
+- Ultimo push: 07/11/2026 18:42 UTC
 
 ## Linguagens
 
@@ -17,4 +17,4 @@
 
 ## Recomendacoes
 
-- Investigue 18 execução(ões) recente(s) com falha.
+- Investigue 14 execução(ões) recente(s) com falha.

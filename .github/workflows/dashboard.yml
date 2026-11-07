@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   dashboard:
@@ -23,10 +24,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 github_dashboard.py --summary
-      - name: Publicar atualização
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html docs/summary.md
-          git diff --cached --quiet || git commit -m "chore: atualiza dashboard do repositorio"
-          git push
+      - name: Abrir ou atualizar PR do dashboard
+        uses: peter-evans/create-pull-request@v8
+        with:
+          base: main
+          branch: automation/dashboard
+          delete-branch: true
+          add-paths: |
+            docs/index.html
+            docs/summary.md
+          commit-message: "chore: atualiza dashboard do repositório"
+          title: "Atualiza dashboard do repositório"
+          body: |
+            Atualização automática dos arquivos do dashboard.
+
+            Revise as mudanças e faça o merge para publicar a versão atualizada.

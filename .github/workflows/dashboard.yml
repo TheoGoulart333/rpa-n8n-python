@@ -16,10 +16,10 @@ permissions:
 
 jobs:
   dashboard:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Baixar o projeto
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Gerar painel com dados do GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -2,23 +2,19 @@
 
 ## Indicadores
 
-- Health score: 82/100
-- Estrelas: 0
-- Forks: 0
+- Health score: 70/100
+- Estrelas: 11
+- Forks: 1
 - Issues abertas: 0
 - Pull requests abertos: 0
-- Execucoes analisadas: 0
-- Falhas recentes: 0
-- Ultimo push: 01/09/2026 15:14 UTC
+- Execucoes analisadas: 20
+- Falhas recentes: 18
+- Ultimo push: 07/11/2026 17:10 UTC
 
 ## Linguagens
 
-- Python: 72%
-- JavaScript: 28%
+- Python: 100%
 
 ## Recomendacoes
 
-- Adicione uma primeira issue para orientar contribuições.
-- Mantenha uma execução automática diária para acompanhar a evolução.
-
-> Gerado em modo demonstracao.
+- Investigue 18 execução(ões) recente(s) com falha.

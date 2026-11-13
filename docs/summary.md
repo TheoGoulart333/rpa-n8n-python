@@ -8,8 +8,8 @@
 - Issues abertas: 0
 - Pull requests abertos: 1
 - Execucoes analisadas: 20
-- Falhas recentes: 14
-- Ultimo push: 07/11/2026 18:42 UTC
+- Falhas recentes: 7
+- Ultimo push: 12/11/2026 18:22 UTC
 
 ## Linguagens
 
@@ -17,4 +17,4 @@
 
 ## Recomendacoes
 
-- Investigue 14 execução(ões) recente(s) com falha.
+- Investigue 7 execução(ões) recente(s) com falha.
